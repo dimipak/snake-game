@@ -1,0 +1,24 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:tsc": "tsc --watch",
+    "dev:server": "browser-sync start -s 'dist' --no-notify --files ./src/scripts/app.js ./src/index.html",
+    "build": "run-s build:*",
+    "build:dir": "mkdirp dist",
+    "build:cp": "cp -R src/assets dist/ && cp -R src/scripts dist/ && cp src/index.html dist/",
+    "build:js": "uglifyjs --compress --mangle --mangle-props -o dist/scripts/app.js -- src/scripts/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.27.7",
+    "mkdirp": "^1.0.4",
+    "npm-run-all": "^4.1.5",
+    "uglify-js": "^3.15.1"
+  }
+}
